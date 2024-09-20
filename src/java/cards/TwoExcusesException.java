@@ -1,4 +1,4 @@
-package tarotaffricain.cards;
+package java.cards;
 
 public class TwoExcusesException extends Exception  {
     public TwoExcusesException() {

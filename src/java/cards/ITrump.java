@@ -1,4 +1,4 @@
-package tarotaffricain.cards;
+package java.cards;
 
 public interface ITrump {
     int compareTo(ITrump otherTrump) throws TwoExcusesException;

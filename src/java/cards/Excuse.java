@@ -1,4 +1,4 @@
-package tarotaffricain.cards;
+package java.cards;
 
 import java.util.Objects;
 

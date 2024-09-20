@@ -1,4 +1,4 @@
-package tarotaffricain.cards;
+package java.cards;
 
 public enum NumberedTrump implements ITrump {
     ONE,
