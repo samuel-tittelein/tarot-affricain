@@ -1,11 +1,13 @@
-package java.players;
+package main.java.players;
 
-import java.Trick;
-import java.cards.Card;
+import main.java.Trick;
+import main.java.cards.Card;
+import main.java.cards.TwoExcusesException;
 
+import java.util.ArrayList;
 import java.util.List;
 
-import static java.Game.LIFE;
+import static main.java.Game.LIFE;
 
 public abstract class AbstractPlayer implements IPlayer {
     String name;
@@ -24,9 +26,11 @@ public abstract class AbstractPlayer implements IPlayer {
     public int getLife() {
         return life;
     }
-
+    public void decreaseLife(int life) {
+        this.life -= life;
+    }
     public void decreaseLife() {
-        life--;
+        decreaseLife(1);
     }
 
     public List<Card> getHand() {
@@ -38,7 +42,22 @@ public abstract class AbstractPlayer implements IPlayer {
     }
 
     protected List<Card> computeAllowedCards(Trick trick) {
-        //TODO
+        List<Card> allowed = new ArrayList<>();
+        Card maxCard = trick.getBestCard();
+        for (Card c : this.hand) {
+            try {
+                if (c.compareTo(maxCard) > 0) {
+                    allowed.add(c);
+                }
+            } catch (TwoExcusesException e) {
+                System.out.println("Error: " + e.getMessage());
+            }
+        }
+        if (allowed.isEmpty()) {
+            allowed = new ArrayList<>(this.hand);
+        }
+
+        return allowed;
     }
 
     @Override

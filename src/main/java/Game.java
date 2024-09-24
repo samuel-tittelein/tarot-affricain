@@ -1,8 +1,8 @@
-package java;
+package main.java;
 
-import java.players.ComputerPlayer;
-import java.players.HumanPlayer;
-import java.players.IPlayer;
+import main.java.players.ComputerPlayer;
+import main.java.players.HumanPlayer;
+import main.java.players.IPlayer;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,7 +24,6 @@ public class Game {
     }
 
     public void init() {
-        //TODO
         Scanner scanner;
         for (int i = 0; i < NB_PLAYERS; i++) {
             System.out.println("Enter the name of player " + (i + 1) + ":");
@@ -39,12 +38,16 @@ public class Game {
                 players.add(new ComputerPlayer(name));
             }
         }
-
-
+        numberOfCards = MAX_CARDS_IN_HAND;
+        currentPlayer = 0;
     }
 
     public void start(){
-        //TODO
+        while (allPlayersAreAlive()) {
+            playRound();
+            displayLife();
+            nextRound();
+        }
     }
 
     private boolean allPlayersAreAlive() {
@@ -57,14 +60,21 @@ public class Game {
     }
 
     private void playRound() {
-        //TODO
+        Round round = new Round(players, currentPlayer, numberOfCards);
+        round.play();
+        currentPlayer = (currentPlayer + 1) % NB_PLAYERS;
     }
 
     private void nextRound() {
-        //TODO
+        numberOfCards += increment;
+        if (numberOfCards <= 0 || numberOfCards >= MAX_CARDS_IN_HAND) {
+            increment = -increment;
+        }
     }
 
     private void displayLife() {
-        //TODO
+        for (IPlayer player : players) {
+            System.out.println(player.getName() + ": " + player.getLife() + " points de vie");
+        }
     }
 }

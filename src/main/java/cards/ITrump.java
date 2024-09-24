@@ -1,4 +1,4 @@
-package java.cards;
+package main.java.cards;
 
 public interface ITrump {
     int compareTo(ITrump otherTrump) throws TwoExcusesException;

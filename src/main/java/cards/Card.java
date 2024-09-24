@@ -1,4 +1,4 @@
-package java.cards;
+package main.java.cards;
 
 import java.util.Objects;
 

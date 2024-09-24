@@ -1,14 +1,16 @@
-package java.players;
+package main.java.players;
 
-import java.cards.Card;
-import java.Round;
-import java.Trick;
+import main.java.Round;
+import main.java.Trick;
+import main.java.cards.Card;
+
 import java.util.List;
 
 public interface IPlayer {
     String getName();
     int getLife();
     void decreaseLife();
+    void decreaseLife(int life);
     List<Card> getHand();
     void receiveCard(Card card);
     int makeBid(Round round);

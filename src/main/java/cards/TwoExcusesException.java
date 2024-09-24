@@ -1,4 +1,4 @@
-package java.cards;
+package main.java.cards;
 
 public class TwoExcusesException extends Exception  {
     public TwoExcusesException() {

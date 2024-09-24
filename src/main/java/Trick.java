@@ -1,7 +1,7 @@
-package java;
+package main.java;
 
-import java.cards.Card;
-import java.cards.TwoExcusesException;
+import main.java.cards.Card;
+import main.java.cards.TwoExcusesException;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,7 +33,7 @@ public class Trick {
         cards.add(card);
     }
 
-    Card getBestCard() {
+    public Card getBestCard() {
         return cards.get(bestCardIndex);
     }
 
